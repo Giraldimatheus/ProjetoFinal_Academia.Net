@@ -1,0 +1,207 @@
+﻿@model LivroDto;
+
+<style>
+    footer {
+        margin-top: 10px;
+        position: inherit !important;
+    }
+</style>
+
+
+<h2>Detalhes do Livro</h2>
+<div class="container">
+    <div class="row">
+        <h3>@Model.Titulo</h3>
+        <div class="d-flex mt-4">
+            <a href="@Model.link" target="_blank">
+                <img src="@Model.Capa" alt="Capa do Livro" />
+            </a>
+            <div class="margin-left-10">
+                <p class="fw-bold">Autor:</p>
+                <p>@Model.Autor</p>
+                <p class="fw-bold">Editora:</p>
+                <p>@Model.Editora</p>
+                <p class="fw-bold">Publicação:</p>
+                <p>@Model.DataPublicacao</p>
+                <a href="@Model.linkCompra" target="_blank" class="btn btn-primary">
+                    Comprar
+                </a>
+            </div>
+        </div>
+
+
+        <!-- Botão de favoritar -->
+        <div class="mt-3">
+            <i onclick="favoritaLivro()" id="favIcon" class="@(Model.Favorito == true ? "fa-solid" : "fa-regular") fa-star cursor"></i>
+            <h3>Descrição: </h3>
+            <p>@Html.Raw(Model.Descricao)</p>
+
+        </div>
+
+        <h3>Comentários</h3>
+
+        @if (Model.Comentarios != null && Model.Comentarios.Count > 0)
+        {
+            <div class="d-flex">
+                <!-- Exibir os comentários -->
+                @foreach (var comentario in Model.Comentarios)
+                {
+                    <p>@comentario.Texto</p>
+                    <a href="#" data-toggle="modal" data-target="#editarComentarioModal_@comentario.Id">
+                        <i class="fa-regular fa-pen-to-square ml-2 btComentario"></i>
+                    </a>
+                    <a href="@Url.Action("DeletarComentario", "Livro", new { id = comentario.IdLivro, comentarioId = comentario.Id })">
+                        <i class="fa-solid fa-trash ms-lg-1 btComentario"></i>
+                    </a>
+
+                    <!-- Modal de edição de comentário -->
+                    <div class="modal fade" id="editarComentarioModal_@comentario.Id" tabindex="-1" role="dialog" aria-labelledby="editarComentarioModalLabel_@comentario.Id" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="editarComentarioModalLabel_@comentario.Id">Editar Comentário</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <!-- Formulário de edição de comentário -->
+                                    <form method="post" action="@Url.Action("EditarComentario", "Livro")">
+                                        <input type="hidden" name="id" value="@Model.Id" />
+                                        <input type="hidden" name="comentarioId" value="@comentario.Id" />
+                                        <div class="form-group">
+                                            <label for="novoTexto">Novo Texto:</label>
+                                            <textarea class="form-control" name="novoTexto" rows="3">@comentario.Texto</textarea>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Salvar</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                }
+            </div>
+        }
+        else
+        {
+            <p>Nenhum comentário encontrado.</p>
+        }
+
+        <hr />
+
+        <!-- Botão "Comentar" para abrir o modal de adicionar comentário -->
+        <button type="button" class="btn btn-primary ComentarioButton" data-toggle="modal" data-target="#adicionarComentarioModal">Comentar</button>
+
+        <!-- Modal de adicionar comentário -->
+        <div class="modal fade" id="adicionarComentarioModal" tabindex="-1" role="dialog" aria-labelledby="adicionarComentarioModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="adicionarComentarioModalLabel">Adicionar Comentário</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Formulário de adicionar comentário -->
+                        <form method="post" action="@Url.Action("AdicionarComentario", "Livro")">
+                            <input type="hidden" name="id" value="@Model.Id" />
+                            <div class="form-group">
+                                <label for="comentario">Comentário:</label>
+                                <textarea class="form-control" id="comentario" name="comentario" rows="3"></textarea>
+                            </div>
+                            <div>
+                                <button id="btnComentar" type="submit" class="btn btn-primary ModalComentar">Comentar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        // Abrir o modal
+        $('#btnComentar').click(function () {
+            $('#adicionarComentarioModal').modal('show');
+        });
+
+        // Abrir o modal editar
+        $('[data-target^="#editarComentarioModal_"]').click(function () {
+            var targetModalId = $(this).data('target');
+            $(targetModalId).modal('show');
+        });
+
+        // Fechar o modal de adicionar
+        $('#adicionarComentarioModal').on('hidden.bs.modal', function () {
+            $(this).find('form')[0].reset();
+        });
+
+        // Função para adicionar o comentário
+        function adicionarComentario() {
+            var livroId = "@Model.Id";
+            var comentario = $('#comentario').val();
+
+            $.ajax({
+                url: '/Livro/AdicionarComentario',
+                type: 'POST',
+                data: { id: livroId, comentario: comentario },
+                success: function (result) {
+                    location.reload();
+                },
+            });
+        }
+
+        $('#btnComentar').click(function (e) {
+            e.preventDefault();
+            adicionarComentario();
+            $('#adicionarComentarioModal').modal('hide');
+        });
+
+        $('.modal form').submit(function (e) {
+            e.preventDefault();
+            var id = $(this).find('input[name="id"]').val();
+            var comentarioId = $(this).find('input[name="comentarioId"]').val();
+            var novoTexto = $(this).find('textarea[name="novoTexto"]').val();
+            editarComentario(id, comentarioId, novoTexto);
+            $(this).closest('.modal').modal('hide');
+        });
+
+        function editarComentario(id, comentarioId, novoTexto) {
+            $.ajax({
+                url: '/Livro/EditarComentario',
+                type: 'GET',
+                data: { id: id, comentarioId: comentarioId, novoTexto: novoTexto },
+                success: function (result) {
+                    location.reload();
+                },
+            });
+        }
+    });
+
+    function toggleFavorite() {
+        var icon = document.getElementById('favIcon');
+        icon.classList.toggle('fa-solid');
+        icon.classList.toggle('fa-regular');
+    }
+
+    function favoritaLivro() {
+        console.log("entrou");
+        var data = "@Model.Id";
+        $.ajax({
+            url: '/Usuario/SalvarLivroFavorito',
+            type: 'POST',
+            data: { id: data },
+            success: function (result) {
+                console.log("favorisucess")
+                toggleFavorite();
+            },
+            error: function () {
+            }
+        });
+    }
+</script>

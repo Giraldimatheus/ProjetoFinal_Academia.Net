@@ -1,0 +1,66 @@
+﻿@model ProjetoFinal_Livros.Models.Usuario
+@{
+    ViewData["Title"] = "Cadastro";
+}
+
+<style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    .container {
+        max-width: 400px;
+    }
+</style>
+
+<div class="container">
+    <div class="row">
+        <h2>Cadastro de Usuário</h2>
+        @Html.HiddenFor(p => p.Id)
+        <form action="@Url.Action("Cadastrar")" method="post">
+            <div class="form-group">
+                <label for="Nome">Nome</label>
+                <input type="text" id="Nome" name="Nome" class="form-control" />
+                @Html.ValidationMessageFor(p => p.Nome, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                <label for="Idade">Idade</label>
+                <input type="text" id="Idade" name="Idade" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label for="Genero">Gênero</label>
+                <select name="genero" class="form-select">
+                    <option value="masculino">Masculino</option>
+                    <option value="feminino">Feminino</option>
+                    <option value="Não-binário">Não-binário</option>
+                    <option value="Transgênero">Transgênero</option>
+                    <option value="Prefiro não responder">Prefiro não responder</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="Email">Email</label>
+                <input type="text" id="Email" name="Email" class="form-control" />
+                @Html.ValidationMessageFor(p => p.Email, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                <label for="Login">Login</label>
+                <input type="text" id="Login" name="Login" class="form-control" />
+                @Html.ValidationMessageFor(p => p.Login, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                <label for="Senha">Senha</label>
+                <input type="password" id="Senha" name="Senha" class="form-control" />
+                @Html.ValidationMessageFor(p => p.Senha, "", new { @class = "text-danger" })
+            </div>
+
+            <button type="submit" class="btn btn-primary">Cadastrar</button>
+        </form>
+    </div>
+</div>
+
+

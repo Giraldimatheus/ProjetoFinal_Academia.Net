@@ -1,0 +1,41 @@
+﻿@model ProjetoFinal_Livros.Models.Usuario
+@{
+    ViewData["Title"] = "Login";
+}
+<div class="imagebody">
+    <div class="h-100">
+        <div class="container">
+            <div class="row">
+                <div class="offset-4 col-md-4 bodyLogin">
+                
+                <h2>Login</h2>
+                <form action="/Usuario/Login" method="post">
+                    <div class="form-group">
+                        <label for="Login">Login</label>
+                        <input type="text" id="Login" name="login" class="form-control" />
+                        <span class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Senha">Senha</label>
+                        <input type="password" id="Senha" name="senha" class="form-control" />
+                        <span class="text-danger"></span>
+                    </div>
+
+                    @if (ViewBag.ErroLogin != null)
+                    {
+                        <div class="alert alert-danger">
+                            @ViewBag.ErroLogin
+                        </div>
+                    }
+
+                    <button type="submit" class="btn btn-primary">Entrar</button>
+
+                    <a href="/Usuario/Cadastro" class="btn btn-secondary">Cadastrar</a>
+                </form>
+                
+            </div>
+        </div>
+    </div>
+</div>
+</div>

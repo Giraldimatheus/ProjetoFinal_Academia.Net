@@ -1,0 +1,29 @@
+﻿@model List<LivroDto>
+<style>
+    footer {
+        position: inherit !important;
+    }
+</style>
+
+<div class="container">
+    <div class="row">
+        @foreach (var livro in Model)
+        {
+            <div class="col-md-4">
+                <a href="@Url.Action("DetalhesLivro", "Livro", new { id = livro.Id })">
+
+                    <div class="livro-card">
+                        <div class="livro-detalhes">
+                            <img class="img" src="@livro.Capa" alt="Capa do livro" />
+                            <h3 class="livro-titulo mt-3">@livro.Titulo</h3>
+                            <p class="livro-id" style="display: none;">Id: @livro.Id</p>
+                            <p class="livro-autor">Autor: @livro.Autor</p>
+                            <p class="livro-editora">Editora: @livro.Editora</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        }
+        
+    </div>
+</div>

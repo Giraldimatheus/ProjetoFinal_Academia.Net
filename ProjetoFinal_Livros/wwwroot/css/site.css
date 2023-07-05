@@ -1,0 +1,98 @@
+
+.cursor{
+    cursor: pointer;
+}
+footer {
+    position: fixed;
+    text-align: center;
+    align-items: center
+}
+
+.bodyLogin {
+    background-color: #f8f9fa;
+    display: block;
+    border-radius:10px;
+    padding:15px;
+}
+
+.text-center{
+    text-align:center;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    font-weight: bold;
+}
+
+.btn-primary {
+    width: 100%;
+    padding: 10px;
+}
+
+.btn-secondary {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.alert {
+    margin-bottom: 20px;
+}
+
+.bg-button {
+    background: #357ae8;
+}
+
+.ml-2{
+    margin-left:10px;
+}
+
+a{
+    text-decoration:none;
+}
+
+.livro-card {
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.img{
+    width:130px;
+    height:170px;
+}
+
+.livro-detalhes{
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+}
+.margin-left-10{
+    margin-left:20px;
+}
+.ComentarioButton{
+    width:250px;
+}
+.ModalComentar{
+    width:100px
+}
+
+.btComentario{
+    font-size:12px
+    
+}
+.imagebody {
+    background-image: url('../img/books.jpg');
+    background-size: 1500px;
+    background-position:center;
+
+}

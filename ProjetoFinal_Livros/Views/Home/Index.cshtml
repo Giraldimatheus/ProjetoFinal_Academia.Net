@@ -1,0 +1,48 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="container mt-5">
+    <div class="row text-center mb-5">
+        <h1>Buscar Livros</h1>
+    </div>
+    <div class="row text-center">
+
+        <div class="col-md-8 offset-2">
+            <form id="searchForm" method="get" action="@Url.Action("PesquisarLivros", "Livro")">
+                <div class="d-flex align-items-center justify-content-between">
+
+                    <input class="form-control" type="text" name="titulo" />
+                    <button class="btn button bg-button ml-2" type="submit">
+
+                        <i class="fa-solid fa-magnifying-glass" style="color: #ffffff;"></i>
+
+                    </button>
+                </div>
+            </form>
+            <p id="errorMessage" style="display: none;">Digite para pesquisar.</p>
+        </div>
+    </div>
+    <div class="row text-center">
+        @if (ViewBag.ErroPesquisa != null)
+        {
+            <div class="col-md-12">
+                <div class="alert alert-danger">
+                    @ViewBag.ErroPesquisa
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+
+<script>
+    document.getElementById('searchForm').addEventListener('submit', function (event) {
+        var searchInput = document.querySelector('input[name="titulo"]');
+        if (searchInput.value.trim() === '') {
+            event.preventDefault();
+            document.getElementById('errorMessage').style.display = 'block';
+        }
+    });
+</script>
