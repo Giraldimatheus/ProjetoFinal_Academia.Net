@@ -9,12 +9,16 @@
   <ItemGroup>
     <Compile Remove="img\**" />
     <Compile Remove="NovaPasta1\**" />
+    <Compile Remove="NovaPasta\**" />
     <Content Remove="img\**" />
     <Content Remove="NovaPasta1\**" />
+    <Content Remove="NovaPasta\**" />
     <EmbeddedResource Remove="img\**" />
     <EmbeddedResource Remove="NovaPasta1\**" />
+    <EmbeddedResource Remove="NovaPasta\**" />
     <None Remove="img\**" />
     <None Remove="NovaPasta1\**" />
+    <None Remove="NovaPasta\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -37,7 +41,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="NovaPasta\" />
     <Folder Include="wwwroot\img\" />
   </ItemGroup>
 
