@@ -3689,11 +3689,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\mhgir\\source\\repos\\ProjetoFinal_Livros\\ProjetoFinal_Livros\\ProjetoFinal_Livros.csproj",
+      "projectUniqueName": "C:\\Users\\mhgir\\source\\repos\\ProjetoFinal_Academia.Net\\ProjetoFinal_Livros\\ProjetoFinal_Livros.csproj",
       "projectName": "ProjetoFinal_Livros",
-      "projectPath": "C:\\Users\\mhgir\\source\\repos\\ProjetoFinal_Livros\\ProjetoFinal_Livros\\ProjetoFinal_Livros.csproj",
+      "projectPath": "C:\\Users\\mhgir\\source\\repos\\ProjetoFinal_Academia.Net\\ProjetoFinal_Livros\\ProjetoFinal_Livros.csproj",
       "packagesPath": "C:\\Users\\mhgir\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\mhgir\\source\\repos\\ProjetoFinal_Livros\\ProjetoFinal_Livros\\obj\\",
+      "outputPath": "C:\\Users\\mhgir\\source\\repos\\ProjetoFinal_Academia.Net\\ProjetoFinal_Livros\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -3769,7 +3769,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "SKy+oIuDmG3vwyGxbr34VVCQmiXibDm0QDGkTPVttmXsa/X6MIU/cZUTjzQDzcjWp5NCWvFmYhg3XpSSMIr7fg==",
+  "dgSpecHash": "clUoX4+ORbZo/kwBza4vsacKC3wRbyFuLnYP1t6lsKvh72cw6WkZh6k570oiEQqcsIp7RIOKPg9T2xZhnBGH2w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\mhgir\\source\\repos\\ProjetoFinal_Livros\\ProjetoFinal_Livros\\ProjetoFinal_Livros.csproj",
+  "projectFilePath": "C:\\Users\\mhgir\\source\\repos\\ProjetoFinal_Academia.Net\\ProjetoFinal_Livros\\ProjetoFinal_Livros.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\mhgir\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\mhgir\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
